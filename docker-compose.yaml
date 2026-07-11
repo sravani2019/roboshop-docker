@@ -18,6 +18,8 @@ services:
       - "80:80"
       depends_on:
       - catalogue
+      - user
+      - cart
    user:
       build: ./user
       image: sravani3093/user:v1
