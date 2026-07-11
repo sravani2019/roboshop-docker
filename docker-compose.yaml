@@ -19,7 +19,7 @@ services:
       depends_on:
       - catalogue
    user:
-      buid: ./user
+      build: ./user
       image: sravani3093/user:v1
       container_name: user
       environment:
