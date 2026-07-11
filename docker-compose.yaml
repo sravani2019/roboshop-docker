@@ -36,11 +36,11 @@ services:
    cart:
       build: ./cart
       image: sravani3093/cart:v1
-      container name: cart
-      environmet:
+      container_name: cart
+      environment:
          REDIS_HOST: redis
          CATALOGUE_HOST: catalogue
-         CATALOGUE_PORT: 8080
+         CATALOGUE_PORT: 8080s
       depends on:
       - redis
       - catalogue
