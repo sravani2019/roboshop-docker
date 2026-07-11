@@ -63,6 +63,13 @@ services:
         depends_on:
         - mysql
         - cart
+   rabbitmq:
+        build: ./rabbitmq
+        image: sravani3093/rabbitmq:v1
+        container_name: rabbitmq
+        environment:
+          RABBITMQ_DEFAULT_USER: roboshop
+          RABBITMQ_DEFAULT_PASS: roboshop123
 
 
 networks:   
