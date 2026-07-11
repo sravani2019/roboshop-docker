@@ -46,6 +46,13 @@ services:
       depends_on:
       - redis
       - catalogue
+   mysql:
+       build: ./mysql
+       image: sravani3093/mysql:v1
+       container_name: mysql
+       environment:
+        MY_SQL_ROOT_PASSWORD: "RoboShop@1"
+     
 
 
 networks:   
