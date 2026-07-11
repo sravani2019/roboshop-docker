@@ -82,7 +82,7 @@ services:
           AMQP_HOST: rabbitmq
           AMQP_USER: roboshop
           AMQP_PASS: roboshop123
-        depends_on
+        depends_on:
         - cart
         - user
         - rabbitmq
