@@ -1,0 +1,25 @@
+name: roboshop
+services:
+   mongodb:
+     build: ./mongodb
+     image: sravani3093/monogodb:v1
+     container_name: mongodb
+   catalogue:
+      build: ./catalogue
+      image: sravani3093/catalogue:v1
+      conatiner_name: catalogue
+      depends_on:
+      - mongodb
+   frontend:
+      build: ./frontend
+      image: sravani3093/frontend:v1
+      container_name: frontend
+      ports:
+      - "80:80"
+      depends_on:
+      - catalogue
+networks:   
+   default: 
+     name: roboshop
+     driver: bridge
+     external: false  
