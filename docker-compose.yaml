@@ -4,6 +4,8 @@ services:
      build: ./mongodb
      image: sravani3093/monogodb:v1
      container_name: mongodb
+     volumes:
+     - mongodb: /data/db
    catalogue:
       build: ./catalogue
       image: sravani3093/catalogue:v1
@@ -35,6 +37,8 @@ services:
        build: ./redis
        image: sravani3093/redis:v1
        container_name: redis
+       volumes:
+       - redis: /data
    cart:
       build: ./cart
       image: sravani3093/cart:v1
@@ -52,7 +56,9 @@ services:
        container_name: mysql
        command: --mysql-native-password=ON --innodb-lock_wait_timeout=120
        environment:
-        MYSQL_ROOT_PASSWORD: "RoboShop@1"
+         MYSQL_ROOT_PASSWORD: "RoboShop@1"
+       volumes:
+       - mysql: /var/lib/mysql
    shipping:
         build: ./shipping
         image: sravani3093/shipping:v1
@@ -70,6 +76,8 @@ services:
         environment:
           RABBITMQ_DEFAULT_USER: roboshop
           RABBITMQ_DEFAULT_PASS: roboshop123
+        volumes:
+        - rabbitmq: /var/lib/rabbitmq
    payment:
         build: ./payment
         image: sravani3093/payment:v1
@@ -93,3 +101,8 @@ networks:
      name: roboshop
      driver: bridge
      external: false  
+volumes:
+   mongodb:
+   redis:
+   mysql:
+   rabbitmq:
