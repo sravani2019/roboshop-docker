@@ -5,7 +5,7 @@ services:
      image: sravani3093/monogodb:v1
      container_name: mongodb
      volumes:
-     - mongodb: /data/db
+     - mongodb:/data/db
    catalogue:
       build: ./catalogue
       image: sravani3093/catalogue:v1
@@ -58,7 +58,7 @@ services:
        environment:
          MYSQL_ROOT_PASSWORD: "RoboShop@1"
        volumes:
-       - mysql: /var/lib/mysql
+       - mysql:/var/lib/mysql
    shipping:
         build: ./shipping
         image: sravani3093/shipping:v1
@@ -77,7 +77,7 @@ services:
           RABBITMQ_DEFAULT_USER: roboshop
           RABBITMQ_DEFAULT_PASS: roboshop123
         volumes:
-        - rabbitmq: /var/lib/rabbitmq
+        - rabbitmq:/var/lib/rabbitmq
    payment:
         build: ./payment
         image: sravani3093/payment:v1
