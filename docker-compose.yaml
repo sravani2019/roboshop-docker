@@ -38,7 +38,7 @@ services:
        image: sravani3093/redis:v1
        container_name: redis
        volumes:
-       - redis: /data
+       - redis:/data
    cart:
       build: ./cart
       image: sravani3093/cart:v1
