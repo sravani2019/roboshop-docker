@@ -8,7 +8,7 @@ EXPOSE 8080
 
 
 # java is portable not os dependent,application built in windows can run in linux
-FROM eclipse-temurin:17-jre-alpine3
+FROM eclipse-temurin:17-jre-alpine
 EXPOSE 8080
 WORKDIR /app
 RUN addgroup -S roboshop && adduser -S -G roboshop roboshop && \
