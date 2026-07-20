@@ -2,19 +2,19 @@ name: roboshop
 services:
    mongodb:
      build: ./mongodb
-     image: sravani3093/monogodb:v1
+     image: sravani3093/monogodb:4.0.0
      container_name: mongodb
      volumes:
      - mongodb:/data/db
    catalogue:
       build: ./catalogue
-      image: sravani3093/catalogue:v1
+      image: sravani3093/catalogue:4.0.0
       container_name: catalogue
       depends_on:
       - mongodb
    frontend:
       build: ./frontend
-      image: sravani3093/frontend:v1
+      image: sravani3093/frontend:4.0.0
       container_name: frontend
       ports:
       - "80:80"
@@ -24,7 +24,7 @@ services:
       - cart
    user:
       build: ./user
-      image: sravani3093/user:v1
+      image: sravani3093/user:4.0.0
       container_name: user
       environment:
          MONGO: true
@@ -35,13 +35,13 @@ services:
       - mongodb
    redis:
        build: ./redis
-       image: sravani3093/redis:v1
+       image: sravani3093/redis:4.0.0
        container_name: redis
        volumes:
        - redis:/data
    cart:
       build: ./cart
-      image: sravani3093/cart:v1
+      image: sravani3093/cart:4.0.0
       container_name: cart
       environment:
          REDIS_HOST: redis
@@ -52,7 +52,7 @@ services:
       - catalogue
    mysql:
        build: ./mysql
-       image: sravani3093/mysql:v1
+       image: sravani3093/mysql:4.0.0
        container_name: mysql
        command: --mysql-native-password=ON --innodb-lock_wait_timeout=120
        environment:
@@ -61,7 +61,7 @@ services:
        - mysql:/var/lib/mysql
    shipping:
         build: ./shipping
-        image: sravani3093/shipping:v1
+        image: sravani3093/shipping:4.0.0
         container_name: shipping
         environment:
           CART_ENDPOINT: cart:8080
@@ -71,7 +71,7 @@ services:
         - cart
    rabbitmq:
         build: ./rabbitmq
-        image: sravani3093/rabbitmq:v1
+        image: sravani3093/rabbitmq:4.0.0
         container_name: rabbitmq
         environment:
           RABBITMQ_DEFAULT_USER: roboshop
@@ -80,7 +80,7 @@ services:
         - rabbitmq:/var/lib/rabbitmq
    payment:
         build: ./payment
-        image: sravani3093/payment:v1
+        image: sravani3093/payment:4.0.0
         container_name: payment
         environment:
           CART_HOST: cart
